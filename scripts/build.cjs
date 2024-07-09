@@ -15,7 +15,7 @@ async function build() {
     await esbuild.build({
       entryPoints: ['src/index.ts'],
       bundle: true,
-      outfile: 'dist/index.esm.js',
+      outfile: 'dist/index.mjs',
       platform: 'node',
       target: 'node18',
       format: 'esm',
