@@ -1,0 +1,36 @@
+name: 'Setup Node.js and Dependencies'
+description: 'Set up Node.js and install dependencies with caching'
+inputs:
+  node-version:
+    description: 'Node.js version to set up'
+    required: true
+    default: '18.x'
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'pnpm'
+
+    - name: Get pnpm cache directory path
+      run: echo "dir=$(pnpm config get cacheFolder)" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Cache pnpm dependencies
+      id: pnpm-cache
+      uses: actions/cache@v4
+      with:
+        path: ${{ env.dir }}
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
+
+    - name: Set cache-hit output
+      run: echo "cache-hit=${{ steps.pnpm-cache.outputs.cache-hit }}" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
