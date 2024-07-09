@@ -8,19 +8,16 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
-
-    - name: Enable pnpm
-      run: corepack enable
-      shell: bash
-
-    - name: Get pnpm cache directory path
-      run: echo "dir=$(pnpm config get cacheFolder)" >> $GITHUB_ENV
-      shell: bash
 
     - name: Cache pnpm dependencies
       id: pnpm-cache
@@ -30,10 +27,6 @@ runs:
         key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-
-
-    - name: Set cache-hit output
-      run: echo "cache-hit=${{ steps.pnpm-cache.outputs.cache-hit }}" >> $GITHUB_ENV
-      shell: bash
 
     - name: Install dependencies
       run: pnpm install
