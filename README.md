@@ -66,6 +66,31 @@ This plugin operates during the build process as follows:
 2. Stores found directives.
 3. After the build is complete, adds relevant directives to the top of output files.
 
+Using esbuild's metafile option can provide more accurate results:
+
+- With metafile, the plugin can obtain a precise list of input files for each output file, improving the accuracy of directive preservation.
+- It may enhance performance in larger projects.
+
+To enable the metafile option, add `metafile: true` to your esbuild configuration:
+
+```typescript
+import { build } from 'esbuild';
+import { preserveDirectivesPlugin } from 'esbuild-plugin-preserve-directives';
+build({
+  // ... other esbuild options
+  metafile: true,
+  plugins: [
+    preserveDirectivesPlugin({
+      directives: ['use client', 'use strict'],
+      include: /\.(js|ts|jsx|tsx)$/,
+      exclude: /node_modules/,
+    }),
+  ],
+});
+```
+
+Note: Using metafile may slightly increase build time and memory usage, but the impact is usually minimal in most cases.
+
 ## License
 
 MIT
