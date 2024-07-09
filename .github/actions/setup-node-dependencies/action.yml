@@ -19,15 +19,6 @@ runs:
         node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
 
-    - name: Cache pnpm dependencies
-      id: pnpm-cache
-      uses: actions/cache@v4
-      with:
-        path: ${{ env.dir }}
-        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-
-
     - name: Install dependencies
       run: pnpm install
       shell: bash
