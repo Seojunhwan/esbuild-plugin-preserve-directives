@@ -1,0 +1,47 @@
+{
+  "name": "esbuild-plugin-preserve-directives",
+  "version": "0.1.0",
+  "description": "An esbuild plugin to preserve important directives like 'use client' at the top of output files.",
+  "author": "seojunhwan <seojunhwan@kakao.com>",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": {
+        "default": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node scripts/build.cjs && pnpm run build:types",
+    "build:types": "tsc --project tsconfig.json --outDir dist",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "esbuild",
+    "plugin",
+    "preserve",
+    "directives"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seojunhwan/esbuild-plugin-preserve-directives.git"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "esbuild": "^0.23.0",
+    "typescript": "^5.5.3"
+  }
+}
