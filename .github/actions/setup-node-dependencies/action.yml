@@ -14,6 +14,10 @@ runs:
         node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
 
+    - name: Enable pnpm
+      run: corepack enable
+      shell: bash
+
     - name: Get pnpm cache directory path
       run: echo "dir=$(pnpm config get cacheFolder)" >> $GITHUB_ENV
       shell: bash
