@@ -1,5 +1,12 @@
 # esbuild-plugin-preserve-directives
 
+## 0.0.5
+
+### Patch Changes
+
+- 52842ff: fix esbuild version
+- 48518e7: fix esbuild version
+
 ## 0.0.4
 
 ### Patch Changes
