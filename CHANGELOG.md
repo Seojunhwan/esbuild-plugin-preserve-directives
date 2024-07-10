@@ -1,5 +1,11 @@
 # esbuild-plugin-preserve-directives
 
+## 0.0.8
+
+### Patch Changes
+
+- d2df56a: fix esbuild version
+
 ## 0.0.7
 
 ### Patch Changes
