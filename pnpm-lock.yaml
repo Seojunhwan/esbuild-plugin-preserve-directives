@@ -15,7 +15,7 @@ importers:
         specifier: ^20.14.10
         version: 20.14.10
       esbuild:
-        specifier: ^0.21.0
+        specifier: ^0.21.4
         version: 0.21.5
       typescript:
         specifier: ^5.5.3
