@@ -25,7 +25,9 @@
     "clean": "rm -rf dist",
     "build": "pnpm run clean && node scripts/build.cjs && pnpm run build:types",
     "build:types": "tsc --project tsconfig.json --outDir dist",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "release": "npx changeset publish",
+    "version": "npx changeset version"
   },
   "keywords": [
     "esbuild",
