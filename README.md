@@ -22,6 +22,7 @@ import { preserveDirectivesPlugin } from 'esbuild-plugin-preserve-directives';
 
 build({
   // ... other esbuild options
+  metafile: true, // improving the accuracy
   plugins: [
     preserveDirectivesPlugin({
       directives: ['use client', 'use strict'],
@@ -42,6 +43,7 @@ import { preserveDirectivesPlugin } from 'esbuild-plugin-preserve-directives';
 
 export default defineConfig({
   // ... other tsup options
+  metafile: true, // improving the accuracy
   esbuildPlugins: [
     preserveDirectivesPlugin({
       directives: ['use client', 'use strict'],
