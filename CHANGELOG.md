@@ -1,5 +1,11 @@
 # esbuild-plugin-preserve-directives
 
+## 0.0.9
+
+### Patch Changes
+
+- ee02b38: Account for single-quote directives
+
 ## 0.0.8
 
 ### Patch Changes
