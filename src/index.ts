@@ -30,7 +30,13 @@ export function preserveDirectivesPlugin(options: DirectivePreservationOptions):
 
         const foundDirectives = lines
           .slice(0, 5)
-          .filter((line) => directives.some((directive) => line.trim().startsWith(`"${directive}"`)));
+          .filter((line) =>
+            directives.some(
+              (directive) =>
+                line.trim().startsWith(`"${directive}"`) ||
+                line.trim().startsWith(`'${directive}'`)
+            )
+          );
 
         if (foundDirectives.length > 0) {
           const relativePath = getRelativePath(args.path);
