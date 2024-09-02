@@ -34,7 +34,8 @@ export function preserveDirectivesPlugin(options: DirectivePreservationOptions):
             directives.some(
               (directive) =>
                 line.trim().startsWith(`"${directive}"`) ||
-                line.trim().startsWith(`'${directive}'`)
+                line.trim().startsWith(`'${directive}'`) ||
+                line.trim().startsWith(`\`${directive}\``)
             )
           );
 
