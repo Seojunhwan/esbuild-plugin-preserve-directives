@@ -1,5 +1,11 @@
 # esbuild-plugin-preserve-directives
 
+## 0.0.10
+
+### Patch Changes
+
+- db701d7: account for backtick directive
+
 ## 0.0.9
 
 ### Patch Changes
