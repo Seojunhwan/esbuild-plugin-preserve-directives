@@ -37,6 +37,8 @@ build();
 
 ### With tsup
 
+You must use the `esbuildPlugin` field.
+
 ```typescript
 import { defineConfig } from 'tsup';
 import { preserveDirectivesPlugin } from 'esbuild-plugin-preserve-directives';
