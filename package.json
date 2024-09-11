@@ -5,7 +5,6 @@
   "author": "seojunhwan <seojunhwan@kakao.com>",
   "license": "MIT",
   "main": "./dist/index.js",
-  "type": "module",
   "exports": {
     ".": {
       "require": {
