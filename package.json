@@ -5,6 +5,8 @@
   "author": "seojunhwan <seojunhwan@kakao.com>",
   "license": "MIT",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": {
@@ -13,7 +15,7 @@
       },
       "import": {
         "default": "./dist/index.mjs",
-        "types": "./dist/index.d.ts"
+        "types": "./dist/index.d.mts"
       }
     }
   },
@@ -23,7 +25,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && node scripts/build.cjs && pnpm run build:types",
-    "build:types": "tsc --project tsconfig.json --outDir dist",
+    "build:types": "tsc --project tsconfig.json --outDir dist --declaration --emitDeclarationOnly && cp dist/index.d.ts dist/index.d.mts",
     "prepublishOnly": "pnpm run build",
     "release": "npx changeset publish",
     "version": "npx changeset version"
